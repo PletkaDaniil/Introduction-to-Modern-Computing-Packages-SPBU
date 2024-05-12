@@ -1,13 +1,14 @@
-function retval = Snake (n, r,x_s)
-    figure 
+function retval = snake(n, radius, x, starter, ender)
     hold on
-    x = x_s;
     y = sin(x);
     res = [];
     for i = 1:n
-        res(i) = Circle(r,x,y);
-        x = x + r*pi/2;
+        t = linspace(starter, ender, 1000);
+        x = radius .* cos(t) + x;
+        y = radius .* sin(t) + y;
+        res(i) = plot(x,y);
+        x = x + radius * pi/2;
         y = sin(x);
-    endfor
+    end
     retval = res;
-endfunction
+end
